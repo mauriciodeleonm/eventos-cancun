@@ -1,11 +1,18 @@
-import { Button } from '@/components/ui/button';
+import { Route, Routes } from 'react-router';
+import { RootLayout } from '@/components/layout/RootLayout';
+import { EventDetailPage } from '@/pages/EventDetailPage';
+import { HomePage } from '@/pages/HomePage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4">
-      <h1 className="text-4xl font-bold">Eventos Cancún</h1>
-      <Button>Ver eventos</Button>
-    </main>
+    <Routes>
+      <Route element={<RootLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="eventos/:id" element={<EventDetailPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
 
