@@ -3,6 +3,7 @@ import { es } from 'date-fns/locale';
 import type { Event } from '@/features/events/schema';
 import { getComputedStatus } from '@/features/events/utils/getComputedStatus';
 import { hasExplicitTime, nowInCancun, parseCancunDate } from '@/lib/timezone';
+import { capitalize } from '@/lib/utils';
 
 export interface EventDayGroup {
   key: string;
@@ -12,10 +13,6 @@ export interface EventDayGroup {
 
 function dayKey(date: Date): string {
   return format(date, 'yyyy-MM-dd');
-}
-
-function capitalize(text: string): string {
-  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 function dayLabel(date: Date, now: Date): string {

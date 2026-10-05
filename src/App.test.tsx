@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import App from './App';
 
@@ -13,15 +13,18 @@ describe('App', () => {
     expect(screen.getByRole('heading', { name: 'Próximos eventos' })).toBeInTheDocument();
   });
 
-  it('renders the event id at /eventos/:id', () => {
+  it('renders the event detail page at /eventos/:id', async () => {
     render(
-      <MemoryRouter initialEntries={['/eventos/festival-jazz-a7c2']}>
+      <MemoryRouter initialEntries={['/eventos/festival-cine-independiente-t3y7']}>
         <App />
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('heading', { name: 'Detalle del evento' })).toBeInTheDocument();
-    expect(screen.getByText('festival-jazz-a7c2')).toBeInTheDocument();
+    await waitFor(() =>
+      expect(
+        screen.getByRole('heading', { name: 'Festival de Cine Independiente' }),
+      ).toBeInTheDocument(),
+    );
   });
 
   it('renders the 404 page on an unknown route', () => {
