@@ -16,16 +16,18 @@ function renderEventList() {
 }
 
 describe('EventList', () => {
-  it('shows a loading message while fetching', () => {
+  it('shows a loading skeleton while fetching', () => {
     renderEventList();
 
-    expect(screen.getByText('Cargando eventos…')).toBeInTheDocument();
+    expect(screen.getByRole('status', { name: 'Cargando eventos' })).toBeInTheDocument();
   });
 
   it('renders the fetched events grouped by day once loaded', async () => {
     renderEventList();
 
-    await waitFor(() => expect(screen.queryByText('Cargando eventos…')).not.toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.queryByRole('status', { name: 'Cargando eventos' })).not.toBeInTheDocument(),
+    );
 
     expect(screen.getAllByRole('article').length).toBeGreaterThan(0);
   });

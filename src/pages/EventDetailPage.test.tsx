@@ -18,10 +18,10 @@ function renderDetailPage(id: string) {
 }
 
 describe('EventDetailPage', () => {
-  it('shows a loading message while fetching', () => {
+  it('shows a loading skeleton while fetching', () => {
     renderDetailPage('cine-bajo-las-estrellas-k3f9');
 
-    expect(screen.getByText('Cargando evento…')).toBeInTheDocument();
+    expect(screen.getByRole('status', { name: 'Cargando evento' })).toBeInTheDocument();
   });
 
   it('renders the event details once loaded, without the finished notice', async () => {

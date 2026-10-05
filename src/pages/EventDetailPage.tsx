@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { Link, useParams } from 'react-router';
+import { EventDetailSkeleton } from '@/features/events/components/EventDetailSkeleton';
 import { EventStatusBadge } from '@/features/events/components/EventStatusBadge';
 import { CATEGORY_FALLBACK_IMAGE } from '@/features/events/constants';
 import { useEvent } from '@/features/events/hooks/useEvent';
@@ -58,11 +59,11 @@ export function EventDetailPage() {
   const { data: event, isPending, isError } = useEvent(id);
 
   if (isPending) {
-    return <p>Cargando evento…</p>;
+    return <EventDetailSkeleton />;
   }
 
   if (isError) {
-    return <p>Ocurrió un error al cargar el evento.</p>;
+    return <p className="text-destructive">Ocurrió un error al cargar el evento.</p>;
   }
 
   if (!event) {
