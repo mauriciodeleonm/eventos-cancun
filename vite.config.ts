@@ -15,5 +15,11 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: './src/test/setup.ts',
+    // Pruebas deterministas: ignoran cualquier .env* local (ej. VITE_DATA_SOURCE=sheet
+    // para probar la integración a mano) y siempre corren contra el mock data.
+    env: {
+      VITE_DATA_SOURCE: 'mock',
+      VITE_EVENTS_CSV_URL: '',
+    },
   },
 });

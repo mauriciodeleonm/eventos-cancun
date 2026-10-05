@@ -1,5 +1,7 @@
+import Papa from 'papaparse';
 import mockEvents from '@/features/events/data/mock-events.json';
 import { eventSchema, type Event } from '@/features/events/schema';
+import { parseSheetRow, type SheetRow } from '@/features/events/utils/parseSheetRow';
 
 const MOCK_DELAY_MS = 300;
 
@@ -31,9 +33,34 @@ export function parseEvents(rawEvents: unknown[]): Event[] {
   return events;
 }
 
-export async function fetchEvents(): Promise<Event[]> {
+async function fetchMockEvents(): Promise<Event[]> {
   await delay(MOCK_DELAY_MS);
   return parseEvents(mockEvents);
+}
+
+async function fetchSheetEvents(): Promise<Event[]> {
+  const csvUrl = import.meta.env.VITE_EVENTS_CSV_URL;
+
+  if (!csvUrl) {
+    throw new Error(
+      'VITE_EVENTS_CSV_URL no está configurada (VITE_DATA_SOURCE=sheet la requiere).',
+    );
+  }
+
+  const response = await fetch(csvUrl);
+
+  if (!response.ok) {
+    throw new Error(`No se pudo obtener el CSV de eventos (status ${response.status}).`);
+  }
+
+  const csvText = await response.text();
+  const { data } = Papa.parse<SheetRow>(csvText, { header: true, skipEmptyLines: true });
+
+  return parseEvents(data.map(parseSheetRow));
+}
+
+export async function fetchEvents(): Promise<Event[]> {
+  return import.meta.env.VITE_DATA_SOURCE === 'sheet' ? fetchSheetEvents() : fetchMockEvents();
 }
 
 export async function fetchEventById(id: string): Promise<Event | null> {
