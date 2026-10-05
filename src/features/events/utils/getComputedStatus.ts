@@ -6,7 +6,7 @@ export type ComputedStatus = 'proximo' | 'en-curso' | 'finalizado';
 
 export function getComputedStatus(
   event: Pick<Event, 'startDate' | 'endDate'>,
-  now = nowInCancun(),
+  now: Date = nowInCancun(),
 ): ComputedStatus {
   const start = parseCancunDate(event.startDate);
   const end = event.endDate ? parseCancunDate(event.endDate) : endOfDay(start);

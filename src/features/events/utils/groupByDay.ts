@@ -34,7 +34,7 @@ function compareEvents(a: Event, b: Event): number {
   return sortKey(a) - sortKey(b) || a.name.localeCompare(b.name, 'es');
 }
 
-export function groupByDay(events: Event[], now = nowInCancun()): EventDayGroup[] {
+export function groupByDay(events: Event[], now: Date = nowInCancun()): EventDayGroup[] {
   const buckets = new Map<string, Event[]>();
 
   for (const event of events) {
