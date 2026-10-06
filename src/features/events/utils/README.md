@@ -35,6 +35,23 @@ Devuelve el link de Google Maps para el venue de un evento.
 - Si el evento ya trae `mapsUrl`, lo regresa tal cual.
 - Si no, genera un link de búsqueda con el nombre del venue + "Cancún", codificado con `encodeURIComponent`.
 
+## `parseSheetRow(row)`
+
+Convierte una fila cruda del CSV del Google Sheet (todo strings, celdas vacías = `""`) en un objeto candidato listo para validar con `eventSchema`.
+
+- Normaliza `"" → undefined` en todos los campos opcionales (si no, Zod rechazaría la fila completa por un `mapsUrl`/`endDate`/`status` vacío).
+- Usa `parsePrice` para la columna `price`.
+- No valida ni deduplica — eso lo hace `parseEvents` (en `api/events.ts`), reutilizado tanto para el mock como para las filas del Sheet.
+
+## `filterEvents(events, filters, now?)`
+
+Filtra una lista de eventos por `categoria` (arreglo), `gratis` (boolean) y `rango` (`'hoy' | 'fin-de-semana' | 'semana' | 'mes'`). Pensada para usarse antes de `groupByDay`.
+
+- Siempre excluye eventos `finalizado`, sin importar el rango — un evento que ya terminó no cuenta como "parte del fin de semana" aunque su fecha caiga dentro de la ventana.
+- `fin-de-semana` es sábado + domingo más próximos; si "hoy" ya es domingo, el fin de semana empezó ayer (sábado) y sigue contando.
+- `semana` = próximos 7 días, `mes` = próximos 30 días, ambos medidos desde `now`.
+- Recibe `now` opcional (por defecto `nowInCancun()`), igual que `getComputedStatus`/`groupByDay`.
+
 ## Dependencia compartida: `@/lib/timezone`
 
 Estas utilidades (sobre todo `getComputedStatus` y `groupByDay`) dependen de `parseCancunDate`/`nowInCancun` en `src/lib/timezone.ts` para que todas las fechas se interpreten en `America/Cancun`, sin importar la zona horaria del navegador o del servidor donde corra la app.
