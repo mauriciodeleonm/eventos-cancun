@@ -7,6 +7,13 @@ import { nowInCancun, parseCancunDate } from '@/lib/timezone';
 export const DATE_RANGES = ['hoy', 'fin-de-semana', 'semana', 'mes'] as const;
 export type DateRange = (typeof DATE_RANGES)[number];
 
+export const DATE_RANGE_LABELS: Record<DateRange, string> = {
+  hoy: 'Hoy',
+  'fin-de-semana': 'Fin de semana',
+  semana: 'Próximos 7 días',
+  mes: 'Próximos 30 días',
+};
+
 export interface EventFiltersState {
   categoria?: EventCategory[];
   rango?: DateRange;

@@ -44,16 +44,16 @@ describe('EventFilters', () => {
     const user = userEvent.setup();
     renderFilters();
 
-    await user.selectOptions(screen.getByRole('combobox', { name: 'Rango de fechas' }), 'semana');
+    await user.click(screen.getByRole('radio', { name: 'Próximos 7 días' }));
 
     expect(screen.getByTestId('url')).toHaveTextContent('rango=semana');
   });
 
-  it('toggles the "Solo gratis" checkbox', async () => {
+  it('toggles the "Solo gratis" switch', async () => {
     const user = userEvent.setup();
     renderFilters();
 
-    await user.click(screen.getByRole('checkbox', { name: 'Solo gratis' }));
+    await user.click(screen.getByRole('switch', { name: 'Solo gratis' }));
 
     expect(screen.getByTestId('url')).toHaveTextContent('gratis=true');
   });
@@ -62,6 +62,6 @@ describe('EventFilters', () => {
     renderFilters('/?categoria=musica&gratis=true');
 
     expect(screen.getByRole('checkbox', { name: 'Música' })).toBeChecked();
-    expect(screen.getByRole('checkbox', { name: 'Solo gratis' })).toBeChecked();
+    expect(screen.getByRole('switch', { name: 'Solo gratis' })).toBeChecked();
   });
 });

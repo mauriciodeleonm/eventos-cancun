@@ -1,12 +1,19 @@
 import { Link, Outlet } from 'react-router';
+import { formatWeekRangeLabel } from '@/features/events/utils/formatWeekRangeLabel';
 
 export function RootLayout() {
   return (
     <>
-      <header>
-        <Link to="/">Eventos Cancún</Link>
+      <header className="mx-auto flex max-w-5xl items-end justify-between gap-4 px-5 pt-5 pb-3">
+        <Link to="/" className="flex flex-col gap-0.5">
+          <span className="text-[19px] leading-[1.2] font-medium tracking-[-0.015em]">
+            Eventos Cancún
+          </span>
+          <span className="text-xs text-neutral-500">{formatWeekRangeLabel()}</span>
+        </Link>
+        <span className="mb-2 h-0.5 w-7 shrink-0 rounded-full bg-primary" />
       </header>
-      <main className="mx-auto max-w-5xl">
+      <main>
         <Outlet />
       </main>
     </>

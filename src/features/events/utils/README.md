@@ -52,6 +52,14 @@ Filtra una lista de eventos por `categoria` (arreglo), `gratis` (boolean) y `ran
 - `semana` = próximos 7 días, `mes` = próximos 30 días, ambos medidos desde `now`.
 - Recibe `now` opcional (por defecto `nowInCancun()`), igual que `getComputedStatus`/`groupByDay`.
 
+## `formatWeekRangeLabel(now?)`
+
+Arma el subtítulo del header ("Semana del 5 al 11 de octubre") con la semana de lunes a domingo que contiene a `now`.
+
+- Encuentra el lunes de esa semana (sin importar qué día de la semana sea `now`) y le suma 6 días para el domingo.
+- Si ambos extremos caen en el mismo mes, lo muestra una sola vez ("del 5 al 11 de octubre"); si la semana cruza de mes, muestra el mes en ambos extremos ("del 26 de octubre al 1 de noviembre").
+- Recibe `now` opcional (por defecto `nowInCancun()`), igual que el resto de utilidades con reloj.
+
 ## Dependencia compartida: `@/lib/timezone`
 
 Estas utilidades (sobre todo `getComputedStatus` y `groupByDay`) dependen de `parseCancunDate`/`nowInCancun` en `src/lib/timezone.ts` para que todas las fechas se interpreten en `America/Cancun`, sin importar la zona horaria del navegador o del servidor donde corra la app.

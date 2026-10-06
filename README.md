@@ -44,7 +44,7 @@ id	name	startDate	endDate	venueName	mapsUrl	price	priceNote	description	imageUrl
 | `price`       |     No      | Número, `0` o `gratis` (= gratis), o vacío (costo desconocido). Nunca asumas `0`. |
 | `priceNote`   |     No      | Texto libre, ej. "Preventa $350, taquilla $450".                                  |
 | `description` |     Sí      | Texto libre.                                                                      |
-| `imageUrl`    |     No      | URL de imagen. Si está vacía, se usa una imagen de respaldo por categoría.        |
+| `imageUrl`    |     No      | URL de imagen. Si está vacía o no carga, se muestra un ícono de la categoría.     |
 | `officialUrl` |     No      | URL del sitio oficial o venta de boletos.                                         |
 | `category`    |     Sí      | Uno de: `deportes`, `cultura`, `musica`, `gastronomia`, `familiar`, `otro`.       |
 | `status`      |     No      | Uno de: `cancelado`, `pospuesto`, `reprogramado`, `agotado`. Vacío = programado.  |

@@ -130,7 +130,7 @@ describe('EventCard', () => {
     expect(screen.getByText('Cancelado')).toBeInTheDocument();
   });
 
-  it('falls back to the category placeholder image on error', () => {
+  it('shows the category icon instead of an image when there is no imageUrl', () => {
     const event = makeEvent({
       id: 'a9',
       name: 'Evento sin imagen',
@@ -138,9 +138,9 @@ describe('EventCard', () => {
       category: 'deportes',
     });
 
-    renderEventCard(event);
+    const { container } = renderEventCard(event);
 
-    const img = screen.getByRole('img', { name: 'Evento sin imagen' });
-    expect(img).toHaveAttribute('src', 'https://placehold.co/600x400?text=Deportes');
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
+    expect(container.querySelector('svg')).toBeInTheDocument();
   });
 });

@@ -35,21 +35,26 @@ describe('EventDetailPage', () => {
       ).toBeInTheDocument(),
     );
 
-    expect(screen.getByRole('link', { name: 'Cinépolis La Isla' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /Cinépolis La Isla/ })).toHaveAttribute(
       'href',
       'https://www.google.com/maps/search/?api=1&query=Cin%C3%A9polis%20La%20Isla%2C%20Canc%C3%BAn',
     );
-    expect(screen.queryByText('Este evento ya terminó.')).not.toBeInTheDocument();
+    expect(screen.queryByText('Este evento ya terminó')).not.toBeInTheDocument();
   });
 
-  it('shows "Evento no encontrado" with a link back to the listing for an unknown id', async () => {
+  it('shows a not-found state with a link back to the listing for an unknown id', async () => {
     renderDetailPage('id-que-no-existe');
 
     await waitFor(() =>
-      expect(screen.getByRole('heading', { name: 'Evento no encontrado' })).toBeInTheDocument(),
+      expect(
+        screen.getByRole('heading', { name: 'No encontramos este evento' }),
+      ).toBeInTheDocument(),
     );
 
-    expect(screen.getByRole('link', { name: 'Volver al listado' })).toHaveAttribute('href', '/');
+    expect(screen.getByRole('link', { name: 'Ver todos los eventos' })).toHaveAttribute(
+      'href',
+      '/',
+    );
   });
 
   it('shows a notice when the event already finished, without hiding it', async () => {
@@ -59,7 +64,7 @@ describe('EventDetailPage', () => {
       expect(screen.getByRole('heading', { name: 'Carrera Nocturna 5K' })).toBeInTheDocument(),
     );
 
-    expect(screen.getByText('Este evento ya terminó.')).toBeInTheDocument();
+    expect(screen.getByText('Este evento ya terminó')).toBeInTheDocument();
   });
 
   it('strikes through the name and shows the Cancelado badge', async () => {
