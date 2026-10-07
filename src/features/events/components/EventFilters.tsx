@@ -23,7 +23,7 @@ function chipClass(active: boolean): string {
 }
 
 const SEG_OPTION =
-  'relative flex cursor-pointer items-center px-3.5 py-2.5 text-[13px] has-[:checked]:text-primary has-[:checked]:shadow-[inset_0_0_0_1px_var(--primary)] hover:bg-foreground/7';
+  'relative flex cursor-pointer items-center px-3.5 py-2.5 text-[13px] has-[:checked]:text-primary has-[:checked]:shadow-[inset_0_0_0_1px_var(--primary)] hover:bg-foreground/7 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:-outline-offset-2 has-[:focus-visible]:outline-primary';
 
 export function EventFilters() {
   const { filters, setFilters } = useEventFilters();
