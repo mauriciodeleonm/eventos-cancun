@@ -7,13 +7,9 @@ import { EventStatusBadge } from '@/features/events/components/EventStatusBadge'
 import { CATEGORY_ICONS, CATEGORY_LABELS, categoryColor } from '@/features/events/constants';
 import type { Event } from '@/features/events/schema';
 import { buildMapsUrl } from '@/features/events/utils/buildMapsUrl';
-import { hasExplicitTime, parseCancunDate } from '@/lib/timezone';
+import { formatTimeLabel } from '@/features/events/utils/formatTimeLabel';
+import { parseCancunDate } from '@/lib/timezone';
 import { cn } from '@/lib/utils';
-
-function formatTimeLabel(event: Pick<Event, 'startDate'>): string {
-  if (!hasExplicitTime(event.startDate)) return 'Hora por confirmar';
-  return format(parseCancunDate(event.startDate), 'HH:mm');
-}
 
 function formatUntilLabel(event: Pick<Event, 'startDate' | 'endDate'>): string | null {
   if (!event.endDate || event.endDate.slice(0, 10) === event.startDate.slice(0, 10)) return null;

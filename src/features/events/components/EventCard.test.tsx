@@ -48,7 +48,7 @@ describe('EventCard', () => {
 
     renderEventCard(event);
 
-    expect(screen.getByText('19:30')).toBeInTheDocument();
+    expect(screen.getByText('7:30 p. m.')).toBeInTheDocument();
   });
 
   it('shows "Hora por confirmar" when startDate has no time', () => {

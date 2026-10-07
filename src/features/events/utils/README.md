@@ -60,6 +60,14 @@ Arma el subtítulo del header ("Semana del 5 al 11 de octubre") con la semana de
 - Si ambos extremos caen en el mismo mes, lo muestra una sola vez ("del 5 al 11 de octubre"); si la semana cruza de mes, muestra el mes en ambos extremos ("del 26 de octubre al 1 de noviembre").
 - Recibe `now` opcional (por defecto `nowInCancun()`), igual que el resto de utilidades con reloj.
 
+## `formatTimeLabel(event)` / `formatClockTime(date)`
+
+Dan formato de hora en 12h ("4:00 p. m.") para `EventCard` y `EventDetailPage`.
+
+- `formatClockTime(date)` formatea una `Date`/`TZDate` puntual: sin cero a la izquierda en la hora, minutos con dos dígitos, sufijo `a. m.`/`p. m.`.
+- `formatTimeLabel(event)` decide qué mostrar: `"Hora por confirmar"` sin hora explícita; `"4:00 p. m. – 8:00 p. m."` si `endDate` es el mismo día que `startDate`; o solo la hora de inicio si `endDate` cae en otro día (ahí el rango de días se indica aparte, no en esta función).
+- El campo sigue guardándose en 24h (`HH:mm`) — este formato es solo de presentación.
+
 ## Dependencia compartida: `@/lib/timezone`
 
 Estas utilidades (sobre todo `getComputedStatus` y `groupByDay`) dependen de `parseCancunDate`/`nowInCancun` en `src/lib/timezone.ts` para que todas las fechas se interpreten en `America/Cancun`, sin importar la zona horaria del navegador o del servidor donde corra la app.

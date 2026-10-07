@@ -24,6 +24,7 @@ import { CATEGORY_ICONS, CATEGORY_LABELS, categoryColor } from '@/features/event
 import { useEvent } from '@/features/events/hooks/useEvent';
 import type { Event } from '@/features/events/schema';
 import { buildMapsUrl } from '@/features/events/utils/buildMapsUrl';
+import { formatClockTime, formatTimeLabel } from '@/features/events/utils/formatTimeLabel';
 import { getComputedStatus } from '@/features/events/utils/getComputedStatus';
 import { hasExplicitTime, parseCancunDate } from '@/lib/timezone';
 import { capitalize, cn } from '@/lib/utils';
@@ -50,8 +51,10 @@ function formatDateLine(event: Pick<Event, 'startDate' | 'endDate'>): string {
 
 function formatTimeLine(event: Pick<Event, 'startDate' | 'endDate'>): string {
   if (!hasExplicitTime(event.startDate)) return 'Hora por confirmar';
-  const time = format(parseCancunDate(event.startDate), 'HH:mm');
-  return isMultiDay(event) ? `Todos los días a las ${time}` : time;
+  if (isMultiDay(event)) {
+    return `Todos los días a las ${formatClockTime(parseCancunDate(event.startDate))}`;
+  }
+  return formatTimeLabel(event);
 }
 
 function formatPastNote(event: Pick<Event, 'startDate'>): string {
