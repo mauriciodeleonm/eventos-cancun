@@ -40,13 +40,13 @@ export function EventFilters() {
 
   return (
     <div className="sticky top-0 z-10 bg-background/90 backdrop-blur-md">
-      <fieldset className="mx-auto flex max-w-5xl flex-col gap-2.5 border-none p-0 pt-2 pb-3">
+      <fieldset className="mx-auto flex max-w-5xl min-w-0 flex-col gap-2.5 border-none p-0 pt-2 pb-3">
         <legend className="sr-only">Filtrar eventos</legend>
 
         <div
           role="group"
           aria-label="Categorías"
-          className="flex gap-2 overflow-x-auto px-5 py-0.5"
+          className="flex min-w-0 gap-2 overflow-x-auto px-5 py-0.5"
         >
           <button
             type="button"
@@ -83,8 +83,8 @@ export function EventFilters() {
           })}
         </div>
 
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-5">
-          <div className="max-w-full overflow-x-auto">
+        <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2 px-5">
+          <div className="max-w-full min-w-0 overflow-x-auto">
             <div
               role="radiogroup"
               aria-label="Rango de fechas"
