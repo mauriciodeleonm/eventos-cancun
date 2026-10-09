@@ -5,6 +5,7 @@ import {
   categoryIconTint,
 } from '@/features/events/constants';
 import type { Event } from '@/features/events/schema';
+import { optimizeImageUrl } from '@/features/events/utils/optimizeImageUrl';
 import { cn } from '@/lib/utils';
 
 export function EventImage({
@@ -38,7 +39,7 @@ export function EventImage({
 
   return (
     <img
-      src={event.imageUrl}
+      src={optimizeImageUrl(event.imageUrl)}
       alt={event.name}
       loading="lazy"
       className={cn('aspect-video object-cover', className)}

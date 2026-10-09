@@ -68,6 +68,14 @@ Dan formato de hora en 12h ("4:00 p. m.") para `EventCard` y `EventDetailPage`.
 - `formatTimeLabel(event)` decide qué mostrar: `"Hora por confirmar"` sin hora explícita; `"4:00 p. m. – 8:00 p. m."` si `endDate` es el mismo día que `startDate`; o solo la hora de inicio si `endDate` cae en otro día (ahí el rango de días se indica aparte, no en esta función).
 - El campo sigue guardándose en 24h (`HH:mm`) — este formato es solo de presentación.
 
+## `optimizeImageUrl(url)`
+
+Inserta los parámetros de optimización de Cloudinary (`f_auto,q_auto,w_600`) en una URL de imagen, usada por `EventImage`.
+
+- Solo transforma URLs de Cloudinary (`https://res.cloudinary.com/<cloud>/image/upload/...`); cualquier otra URL (ej. `placehold.co` en el mock) se devuelve sin cambios.
+- Inserta los parámetros justo después de `/upload/`, antes del segmento de versión si existe (`/upload/f_auto,q_auto,w_600/v123.../archivo.jpg`), que es sintaxis válida de Cloudinary.
+- No requiere credenciales ni cuenta: la URL completa (con el cloud name) ya viene en `imageUrl` porque quien captura el evento sube la imagen a Cloudinary a mano y pega esa URL en el Sheet.
+
 ## Dependencia compartida: `@/lib/timezone`
 
 Estas utilidades (sobre todo `getComputedStatus` y `groupByDay`) dependen de `parseCancunDate`/`nowInCancun` en `src/lib/timezone.ts` para que todas las fechas se interpreten en `America/Cancun`, sin importar la zona horaria del navegador o del servidor donde corra la app.
