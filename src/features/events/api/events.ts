@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import mockEvents from '@/features/events/data/mock-events.json';
+import mockEvents from '@/features/events/data/mock-events';
 import { eventSchema, type Event } from '@/features/events/schema';
 import { parseSheetRow, type SheetRow } from '@/features/events/utils/parseSheetRow';
 

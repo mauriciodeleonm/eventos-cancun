@@ -1,7 +1,7 @@
-import mockEvents from '@/features/events/data/mock-events.json';
+import mockEvents from '@/features/events/data/mock-events';
 import { eventSchema } from '@/features/events/schema';
 
-describe('mock-events.json', () => {
+describe('mock-events', () => {
   it('has at least 8 events', () => {
     expect(mockEvents.length).toBeGreaterThanOrEqual(8);
   });

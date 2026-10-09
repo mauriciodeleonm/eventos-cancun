@@ -25,8 +25,8 @@ describe('EventDetailPage', () => {
   });
 
   it('renders the event details once loaded, without the finished notice', async () => {
-    // Uses the furthest-dated non-cancelled mock event so this test stays valid the longest
-    // as real time passes (mock dates are static, see mock-events.json).
+    // Uses the furthest-dated non-cancelled mock event (mock dates are computed relative to
+    // today, see mock-events.ts) so this test stays valid regardless of when it runs.
     renderDetailPage('festival-cine-independiente-t3y7');
 
     await waitFor(() =>
