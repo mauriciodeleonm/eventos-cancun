@@ -51,6 +51,8 @@ id	name	startDate	endDate	venueName	mapsUrl	price	priceNote	description	imageUrl
 
 **Importante:** las columnas `startDate`/`endDate` deben estar formateadas como **texto sin formato** (Formato → Número → Texto sin formato) antes de escribir las fechas — si no, Google Sheets las reinterpreta como su propio tipo de fecha/hora y las exporta en un formato distinto al que espera la app.
 
+**Imágenes:** sube el flyer a tu cuenta de [Cloudinary](https://cloudinary.com) (plan gratis) y pega en `imageUrl` la URL que te da, tal cual (sin agregarle parámetros) — la app inserta las transformaciones de optimización (`f_auto,q_auto,w_600`) automáticamente al mostrarla.
+
 Las filas inválidas (campo obligatorio vacío, categoría/estado que no están en la lista, id duplicado) se descartan al cargar, sin romper la app — se registra un aviso en la consola del navegador.
 
 ### Generar los ids automáticamente (opcional)
