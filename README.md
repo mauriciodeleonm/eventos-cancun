@@ -4,6 +4,8 @@ SPA de código abierto que muestra los eventos de la semana y del mes en Cancún
 
 Sin backend propio: los datos vienen de datos de ejemplo (mock) o de un Google Sheet publicado como CSV.
 
+**Demo en vivo:** [eventos-cancun.netlify.app](https://eventos-cancun.netlify.app/)
+
 ## Capturas
 
 | Listado (escritorio)                                     | Detalle de evento                                            |
