@@ -12,6 +12,8 @@ Sin backend propio: los datos vienen de datos de ejemplo (mock) o de un Google S
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | ![Listado de eventos](docs/screenshots/home-desktop.png) | ![Detalle de un evento](docs/screenshots/detail-desktop.png) |
 
+**Listado (mobile)**
+
 <img src="docs/screenshots/home-mobile.png" alt="Listado de eventos en mobile" width="280" />
 
 ## Funcionalidad
