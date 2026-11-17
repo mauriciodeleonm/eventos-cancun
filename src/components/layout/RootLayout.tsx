@@ -1,7 +1,17 @@
-import { Link, Outlet } from 'react-router';
+import { useEffect } from 'react';
+import { Link, Outlet, useLocation } from 'react-router';
 import { formatWeekRangeLabel } from '@/features/events/utils/formatWeekRangeLabel';
 
 export function RootLayout() {
+  const { pathname } = useLocation();
+
+  // react-router en modo declarativo (BrowserRouter) no resetea el scroll al navegar —
+  // <ScrollRestoration> solo existe para data routers (createBrowserRouter), que este
+  // proyecto no usa (ver "Decisiones descartadas" en CLAUDE.md).
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <header className="mx-auto flex max-w-5xl items-end justify-between gap-4 px-5 pt-5 pb-3">
