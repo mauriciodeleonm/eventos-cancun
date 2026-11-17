@@ -88,21 +88,21 @@ Una pestaña llamada **`Eventos`** (la única que se publica como CSV) con estos
 id	name	startDate	endDate	venueName	mapsUrl	price	priceNote	description	imageUrl	officialUrl	category	status
 ```
 
-| Columna       | Obligatoria | Formato / valores válidos                                                                                      |
-| ------------- | :---------: | -------------------------------------------------------------------------------------------------------------- |
-| `id`          |     Sí      | Texto único. Se genera solo (ver Apps Script abajo); no se edita a mano.                                       |
-| `name`        |     Sí      | Texto libre.                                                                                                   |
-| `startDate`   |     Sí      | `YYYY-MM-DDTHH:mm`, o `YYYY-MM-DD` si la hora no está confirmada.                                              |
-| `endDate`     |     No      | Mismo formato que `startDate`. Vacío si el evento es de un solo día.                                           |
-| `venueName`   |     Sí      | Texto libre.                                                                                                   |
-| `mapsUrl`     |     No      | URL de Google Maps. Si está vacía, se genera una a partir de `venueName`.                                      |
-| `price`       |     No      | Número, `0` o `gratis` (= gratis), o vacío (costo desconocido). Nunca asumas `0`.                              |
-| `priceNote`   |     No      | Texto libre, ej. "Preventa $350, taquilla $450".                                                               |
-| `description` |     Sí      | Texto libre.                                                                                                   |
-| `imageUrl`    |     No      | Una o varias URLs de imagen separadas por coma. Si está vacía o no carga, se muestra un ícono de la categoría. |
-| `officialUrl` |     No      | URL del sitio oficial o venta de boletos.                                                                      |
-| `category`    |     Sí      | Uno de: `deportes`, `cultura`, `musica`, `gastronomia`, `familiar`, `otro`.                                    |
-| `status`      |     No      | Uno de: `cancelado`, `pospuesto`, `reprogramado`, `agotado`. Vacío = programado.                               |
+| Columna       | Obligatoria | Formato / valores válidos                                                                                                   |
+| ------------- | :---------: | --------------------------------------------------------------------------------------------------------------------------- |
+| `id`          |     Sí      | Texto único. Se genera solo (ver Apps Script abajo); no se edita a mano.                                                    |
+| `name`        |     Sí      | Texto libre.                                                                                                                |
+| `startDate`   |     Sí      | `YYYY-MM-DDTHH:mm`, o `YYYY-MM-DD` si la hora no está confirmada.                                                           |
+| `endDate`     |     No      | Mismo formato que `startDate`. Vacío si el evento es de un solo día.                                                        |
+| `venueName`   |     Sí      | Texto libre.                                                                                                                |
+| `mapsUrl`     |     No      | URL de Google Maps. Si está vacía, se genera una a partir de `venueName`.                                                   |
+| `price`       |     No      | Número, `0` o `gratis` (= gratis), o vacío (costo desconocido). Nunca asumas `0`.                                           |
+| `priceNote`   |     No      | Texto libre, ej. "Preventa $350, taquilla $450".                                                                            |
+| `description` |     Sí      | Texto libre.                                                                                                                |
+| `imageUrl`    |     No      | Una o varias URLs de imagen separadas por coma. Si está vacía o no carga, se muestra un ícono de la categoría.              |
+| `officialUrl` |     No      | URL del sitio oficial o venta de boletos.                                                                                   |
+| `category`    |     Sí      | Uno de: `deportes`, `cultura`, `musica`, `gastronomia`, `familiar`, `otro`.                                                 |
+| `status`      |     No      | Uno de: `cancelado`, `pospuesto`, `reprogramado`, `agotado` (no distingue mayúsculas/acentos/espacios). Vacío = programado. |
 
 **Importante:** las columnas `startDate`/`endDate` deben estar formateadas como **texto sin formato** (Formato → Número → Texto sin formato) antes de escribir las fechas — si no, Google Sheets las reinterpreta como su propio tipo de fecha/hora y las exporta en un formato distinto al que espera la app.
 
