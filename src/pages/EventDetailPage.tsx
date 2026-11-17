@@ -1,5 +1,4 @@
 import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
 import {
   AlertTriangle,
   ArrowLeft,
@@ -24,30 +23,11 @@ import { CATEGORY_ICONS, CATEGORY_LABELS, categoryColor } from '@/features/event
 import { useEvent } from '@/features/events/hooks/useEvent';
 import type { Event } from '@/features/events/schema';
 import { buildMapsUrl } from '@/features/events/utils/buildMapsUrl';
+import { formatDateLine, formatLongDay, isMultiDay } from '@/features/events/utils/formatDateLine';
 import { formatClockTime, formatTimeLabel } from '@/features/events/utils/formatTimeLabel';
 import { getComputedStatus } from '@/features/events/utils/getComputedStatus';
 import { hasExplicitTime, parseCancunDate } from '@/lib/timezone';
-import { capitalize, cn } from '@/lib/utils';
-
-function isMultiDay(event: Pick<Event, 'startDate' | 'endDate'>): boolean {
-  return Boolean(event.endDate) && event.endDate!.slice(0, 10) !== event.startDate.slice(0, 10);
-}
-
-function formatLongDay(date: Date): string {
-  return format(date, "EEEE d 'de' MMMM", { locale: es });
-}
-
-function formatDateLine(event: Pick<Event, 'startDate' | 'endDate'>): string {
-  const start = parseCancunDate(event.startDate);
-  const year = format(start, 'yyyy');
-
-  if (isMultiDay(event)) {
-    const end = parseCancunDate(event.endDate!);
-    return `Del ${formatLongDay(start)} al ${formatLongDay(end)} de ${year}`;
-  }
-
-  return `${capitalize(formatLongDay(start))} de ${year}`;
-}
+import { cn } from '@/lib/utils';
 
 function formatTimeLine(event: Pick<Event, 'startDate' | 'endDate'>): string {
   if (!hasExplicitTime(event.startDate)) return 'Hora por confirmar';

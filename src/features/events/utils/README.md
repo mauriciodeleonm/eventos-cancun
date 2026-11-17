@@ -76,6 +76,14 @@ Arma el subtítulo del header ("Semana del 5 al 11 de octubre") con la semana de
 - Si ambos extremos caen en el mismo mes, lo muestra una sola vez ("del 5 al 11 de octubre"); si la semana cruza de mes, muestra el mes en ambos extremos ("del 26 de octubre al 1 de noviembre").
 - Recibe `now` opcional (por defecto `nowInCancun()`), igual que el resto de utilidades con reloj.
 
+## `formatDateLine(event)` / `isMultiDay(event)` / `formatLongDay(date)`
+
+Arma la línea de fecha larga ("Del sábado 24 de octubre al domingo 25 de octubre de 2026") para `EventDetailPage`.
+
+- `isMultiDay(event)` compara los primeros 10 caracteres de `startDate`/`endDate` (la parte de fecha) para saber si son días distintos.
+- `formatLongDay(date)` da el formato "sábado 24 de octubre" para un día puntual.
+- `formatDateLine(event)` decide qué mostrar: un solo día capitalizado con su año; o, si es de varios días, ambos extremos — mostrando el año una sola vez si coincide, o los dos años cuando el evento cruza fin de año (ej. 30 de diciembre a 2 de enero).
+
 ## `formatTimeLabel(event)` / `formatClockTime(date)`
 
 Dan formato de hora en 12h ("4:00 p. m.") para `EventCard` y `EventDetailPage`.
