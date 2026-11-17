@@ -28,6 +28,14 @@ Convierte el valor crudo de una celda de precio (string) a `number | null`.
 - Quita `$`, comas y espacios antes de convertir a número.
 - Cualquier texto no reconocido → `null`, **nunca** `0` — un costo desconocido no se asume gratis.
 
+## `parseStatus(rawValue)`
+
+Normaliza el valor crudo de la celda `status` a uno de `EVENT_STATUSES`, o `undefined`.
+
+- Celda vacía o `undefined` → `undefined` (se trata como `programado`, el valor por defecto).
+- Trim + minúsculas + sin acentos (reutiliza `stripAccents` de `parsePrice.ts`) antes de comparar, así "Cancelado", " CANCÉLADO " y "cancelado" dan el mismo resultado.
+- Valor no reconocido (typo, columna mal llenada) → `undefined` con advertencia en consola, **nunca** rompe la fila completa — antes de esta función, `category`/`status` llegaban crudos a Zod y un valor con mayúsculas o espacios de más hacía que `eventSchema.safeParse` rechazara el evento entero.
+
 ## `buildMapsUrl(event)`
 
 Devuelve el link de Google Maps para el venue de un evento.

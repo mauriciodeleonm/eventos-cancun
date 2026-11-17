@@ -105,4 +105,12 @@ describe('parseSheetRow + parseEvents (full pipeline on real sheet rows)', () =>
     expect(events).toHaveLength(1);
     expect(events[0].name).toBe('Prueba Concierto Acústico');
   });
+
+  it('keeps the row when the status cell has stray casing/whitespace instead of discarding it', () => {
+    const messyStatusRow = { ...validRow, id: 'prueba-status-mal-escrito', status: ' Cancelado ' };
+    const events = parseEvents([messyStatusRow].map(parseSheetRow));
+
+    expect(events).toHaveLength(1);
+    expect(events[0].status).toBe('cancelado');
+  });
 });

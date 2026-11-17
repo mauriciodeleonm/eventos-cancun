@@ -1,6 +1,6 @@
 const DIACRITICS_REGEX = /[\u0300-\u036f]/g;
 
-function stripAccents(text: string): string {
+export function stripAccents(text: string): string {
   return text.normalize('NFD').replace(DIACRITICS_REGEX, '');
 }
 
