@@ -6,7 +6,9 @@ import { EventDetailPage } from '@/pages/EventDetailPage';
 import { HomePage } from '@/pages/HomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
-const queryClient = new QueryClient();
+// staleTime > 0 para que useEvent reutilice la lista ya cacheada por useEvents (ver
+// src/features/events/hooks/useEvent.ts) en vez de volver a pedirla/parsearla al instante.
+const queryClient = new QueryClient({ defaultOptions: { queries: { staleTime: 60_000 } } });
 
 function App() {
   return (
