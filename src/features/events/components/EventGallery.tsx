@@ -33,7 +33,7 @@ export function EventGallery({
         type="button"
         aria-label="Imagen anterior"
         onClick={() => setIndex((i) => (i - 1 + images.length) % images.length)}
-        className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full bg-background/70 p-1.5 text-foreground hover:bg-background/90"
+        className="absolute top-1/2 left-2 -translate-y-1/2 cursor-pointer rounded-full bg-background/70 p-1.5 text-foreground hover:bg-background/90"
       >
         <ChevronLeft size={18} aria-hidden="true" />
       </button>
@@ -41,7 +41,7 @@ export function EventGallery({
         type="button"
         aria-label="Siguiente imagen"
         onClick={() => setIndex((i) => (i + 1) % images.length)}
-        className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full bg-background/70 p-1.5 text-foreground hover:bg-background/90"
+        className="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer rounded-full bg-background/70 p-1.5 text-foreground hover:bg-background/90"
       >
         <ChevronRight size={18} aria-hidden="true" />
       </button>
@@ -54,7 +54,7 @@ export function EventGallery({
             aria-current={i === index}
             onClick={() => setIndex(i)}
             className={cn(
-              'size-1.5 rounded-full',
+              'size-1.5 cursor-pointer rounded-full',
               i === index ? 'bg-foreground' : 'bg-foreground/40',
             )}
           />
