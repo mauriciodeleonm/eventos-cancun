@@ -7,6 +7,7 @@ import { EventStatusBadge } from '@/features/events/components/EventStatusBadge'
 import { CATEGORY_ICONS, CATEGORY_LABELS, categoryColor } from '@/features/events/constants';
 import type { Event } from '@/features/events/schema';
 import { buildMapsUrl } from '@/features/events/utils/buildMapsUrl';
+import { formatPriceLabel } from '@/features/events/utils/formatPriceLabel';
 import { formatTimeLabel } from '@/features/events/utils/formatTimeLabel';
 import { parseCancunDate } from '@/lib/timezone';
 import { cn } from '@/lib/utils';
@@ -14,10 +15,6 @@ import { cn } from '@/lib/utils';
 function formatUntilLabel(event: Pick<Event, 'startDate' | 'endDate'>): string | null {
   if (!event.endDate || event.endDate.slice(0, 10) === event.startDate.slice(0, 10)) return null;
   return `Hasta el ${format(parseCancunDate(event.endDate), "EEEE d 'de' MMMM", { locale: es })}`;
-}
-
-function formatPriceLabel(price: number): string {
-  return `$${new Intl.NumberFormat('es-MX').format(price)} MXN`;
 }
 
 function PriceInfo({ event }: { event: Pick<Event, 'price' | 'priceNote' | 'officialUrl'> }) {

@@ -24,6 +24,7 @@ import { useEvent } from '@/features/events/hooks/useEvent';
 import type { Event } from '@/features/events/schema';
 import { buildMapsUrl } from '@/features/events/utils/buildMapsUrl';
 import { formatDateLine, formatLongDay, isMultiDay } from '@/features/events/utils/formatDateLine';
+import { formatPriceLabel } from '@/features/events/utils/formatPriceLabel';
 import { formatClockTime, formatTimeLabel } from '@/features/events/utils/formatTimeLabel';
 import { getComputedStatus } from '@/features/events/utils/getComputedStatus';
 import { hasExplicitTime, parseCancunDate } from '@/lib/timezone';
@@ -40,10 +41,6 @@ function formatTimeLine(event: Pick<Event, 'startDate' | 'endDate'>): string {
 function formatPastNote(event: Pick<Event, 'startDate'>): string {
   const date = parseCancunDate(event.startDate);
   return `Se realizó el ${formatLongDay(date)} de ${format(date, 'yyyy')}.`;
-}
-
-function formatPriceLabel(price: number): string {
-  return `$${new Intl.NumberFormat('es-MX').format(price)} MXN`;
 }
 
 function PriceInfo({ event }: { event: Pick<Event, 'price' | 'priceNote' | 'officialUrl'> }) {

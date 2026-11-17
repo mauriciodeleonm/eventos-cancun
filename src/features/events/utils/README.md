@@ -36,6 +36,10 @@ Normaliza el valor crudo de la celda `status` a uno de `EVENT_STATUSES`, o `unde
 - Trim + minúsculas + sin acentos (reutiliza `stripAccents` de `parsePrice.ts`) antes de comparar, así "Cancelado", " CANCÉLADO " y "cancelado" dan el mismo resultado.
 - Valor no reconocido (typo, columna mal llenada) → `undefined` con advertencia en consola, **nunca** rompe la fila completa — antes de esta función, `category`/`status` llegaban crudos a Zod y un valor con mayúsculas o espacios de más hacía que `eventSchema.safeParse` rechazara el evento entero.
 
+## `formatPriceLabel(price)`
+
+Da formato `"$350 MXN"` a un precio numérico conocido (`Intl.NumberFormat` en `es-MX`), usada por `EventCard` y `EventDetailPage`. No decide qué mostrar cuando el precio es `0` o `null` — eso sigue en el componente `PriceInfo` de cada uno, porque su presentación (envoltorio, tamaño de texto) es distinta en la card y en el detalle.
+
 ## `buildMapsUrl(event)`
 
 Devuelve el link de Google Maps para el venue de un evento.
