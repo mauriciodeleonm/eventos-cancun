@@ -1,3 +1,4 @@
+import { parseImageUrls } from '@/features/events/utils/parseImageUrls';
 import { parsePrice } from '@/features/events/utils/parsePrice';
 
 export type SheetRow = Record<string, string>;
@@ -17,7 +18,7 @@ export function parseSheetRow(row: SheetRow): unknown {
     price: parsePrice(row.price ?? ''),
     priceNote: emptyToUndefined(row.priceNote),
     description: emptyToUndefined(row.description),
-    imageUrl: emptyToUndefined(row.imageUrl),
+    imageUrls: parseImageUrls(row.imageUrl),
     officialUrl: emptyToUndefined(row.officialUrl),
     category: emptyToUndefined(row.category),
     status: emptyToUndefined(row.status),

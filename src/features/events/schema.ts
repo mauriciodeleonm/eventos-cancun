@@ -15,7 +15,7 @@ export const eventSchema = z.object({
   price: z.number().nullable(),
   priceNote: z.string().optional(),
   description: z.string().min(1),
-  imageUrl: z.string().url().optional(),
+  imageUrls: z.array(z.string().url()).min(1).optional(),
   officialUrl: z.string().url().optional(),
   category: z.enum(EVENT_CATEGORIES),
   status: z.enum(EVENT_STATUSES).optional(),

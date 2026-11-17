@@ -17,7 +17,7 @@ const mockEvents = [
     price: 0,
     description:
       'Proyección al aire libre de clásicos del cine mexicano, con área de cojines y food trucks.',
-    imageUrl: 'https://placehold.co/600x400?text=Cine+bajo+las+estrellas',
+    imageUrls: ['https://placehold.co/600x400?text=Cine+bajo+las+estrellas'],
     category: 'familiar',
   },
   {
@@ -27,7 +27,7 @@ const mockEvents = [
     venueName: 'Playa Delfines',
     price: null,
     description: 'Torneo abierto de voleibol de playa con categorías varonil, femenil y mixto.',
-    imageUrl: 'https://placehold.co/600x400?text=Voleibol+Playa',
+    imageUrls: ['https://placehold.co/600x400?text=Voleibol+Playa'],
     officialUrl: 'https://example.com/torneo-voleibol',
     category: 'deportes',
   },
@@ -41,7 +41,11 @@ const mockEvents = [
       'https://www.google.com/maps/search/?api=1&query=Malec%C3%B3n%20Tajamar%2C%20Canc%C3%BAn',
     price: 150,
     description: 'Tres días de gastronomía caribeña con más de 30 expositores locales.',
-    imageUrl: 'https://placehold.co/600x400?text=Feria+Gastronomica',
+    imageUrls: [
+      'https://placehold.co/600x400?text=Feria+Gastronomica+1',
+      'https://placehold.co/600x400?text=Feria+Gastronomica+2',
+      'https://placehold.co/600x400?text=Feria+Gastronomica+3',
+    ],
     category: 'gastronomia',
   },
   {
@@ -52,7 +56,7 @@ const mockEvents = [
     venueName: 'Plaza Las Américas',
     price: 50,
     description: 'Exposición y venta de artesanías de creadores de Quintana Roo.',
-    imageUrl: 'https://placehold.co/600x400?text=Expo+Artesanal',
+    imageUrls: ['https://placehold.co/600x400?text=Expo+Artesanal'],
     category: 'cultura',
   },
   {
@@ -62,7 +66,7 @@ const mockEvents = [
     venueName: 'Malecón Bonampak',
     price: 200,
     description: 'Carrera nocturna de 5 kilómetros con kit de corredor incluido.',
-    imageUrl: 'https://placehold.co/600x400?text=Carrera+Nocturna',
+    imageUrls: ['https://placehold.co/600x400?text=Carrera+Nocturna'],
     category: 'deportes',
   },
   {
@@ -72,7 +76,7 @@ const mockEvents = [
     venueName: 'Mercado 28',
     price: 0,
     description: 'Bazar de diseñadores y marcas independientes de Cancún.',
-    imageUrl: 'https://placehold.co/600x400?text=Bazar+de+Diseno',
+    imageUrls: ['https://placehold.co/600x400?text=Bazar+de+Diseno'],
     category: 'otro',
   },
   {
@@ -92,7 +96,7 @@ const mockEvents = [
     price: 550,
     priceNote: 'Reembolsos en el punto de venta original',
     description: 'Concierto de rock alternativo con bandas locales e invitados nacionales.',
-    imageUrl: 'https://placehold.co/600x400?text=Concierto+Rock',
+    imageUrls: ['https://placehold.co/600x400?text=Concierto+Rock'],
     category: 'musica',
     status: 'cancelado',
   },
@@ -104,7 +108,7 @@ const mockEvents = [
     price: 450,
     priceNote: 'Boletos agotados en línea, verificar disponibilidad en taquilla',
     description: 'Puesta en escena de la obra de Federico García Lorca.',
-    imageUrl: 'https://placehold.co/600x400?text=Bodas+de+Sangre',
+    imageUrls: ['https://placehold.co/600x400?text=Bodas+de+Sangre'],
     category: 'cultura',
     status: 'agotado',
   },

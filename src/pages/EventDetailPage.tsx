@@ -18,7 +18,7 @@ import { Link, useParams } from 'react-router';
 import { EmptyState, EMPTY_STATE_ACTION_CLASS } from '@/components/EmptyState';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { EventDetailSkeleton } from '@/features/events/components/EventDetailSkeleton';
-import { EventImage } from '@/features/events/components/EventImage';
+import { EventGallery } from '@/features/events/components/EventGallery';
 import { EventStatusBadge } from '@/features/events/components/EventStatusBadge';
 import { CATEGORY_ICONS, CATEGORY_LABELS, categoryColor } from '@/features/events/constants';
 import { useEvent } from '@/features/events/hooks/useEvent';
@@ -196,7 +196,7 @@ export function EventDetailPage() {
         </div>
       )}
 
-      <EventImage event={event} className="rounded-lg" iconSize={52} />
+      <EventGallery event={event} className="rounded-lg" />
 
       <div className="flex flex-col gap-2.5">
         <div className="flex flex-wrap items-center gap-2.5">

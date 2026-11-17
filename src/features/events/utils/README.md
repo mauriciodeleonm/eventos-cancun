@@ -43,6 +43,14 @@ Convierte una fila cruda del CSV del Google Sheet (todo strings, celdas vacías 
 - Usa `parsePrice` para la columna `price`.
 - No valida ni deduplica — eso lo hace `parseEvents` (en `api/events.ts`), reutilizado tanto para el mock como para las filas del Sheet.
 
+## `parseImageUrls(raw)`
+
+Convierte la celda cruda de la columna `imageUrl` (un solo string, posiblemente con varias URLs separadas por coma) en `string[] | undefined`.
+
+- Celda vacía o `undefined` → `undefined`.
+- Separa por coma, recorta espacios y descarta entradas vacías (comas de sobra al final no rompen el parseo).
+- Usada por `parseSheetRow`; el mock define `imageUrls` directamente como arreglo.
+
 ## `filterEvents(events, filters, now?)`
 
 Filtra una lista de eventos por `categoria` (arreglo), `gratis` (boolean) y `rango` (`'hoy' | 'fin-de-semana' | 'semana' | 'mes'`). Pensada para usarse antes de `groupByDay`.
@@ -70,11 +78,11 @@ Dan formato de hora en 12h ("4:00 p. m.") para `EventCard` y `EventDetailPage`.
 
 ## `optimizeImageUrl(url)`
 
-Inserta los parámetros de optimización de Cloudinary (`f_auto,q_auto,w_600`) en una URL de imagen, usada por `EventImage`.
+Inserta los parámetros de optimización de Cloudinary (`f_auto,q_auto,w_600`) en una URL de imagen, usada por `EventImage` y `EventGallery` (una vez por cada URL en `imageUrls`).
 
 - Solo transforma URLs de Cloudinary (`https://res.cloudinary.com/<cloud>/image/upload/...`); cualquier otra URL (ej. `placehold.co` en el mock) se devuelve sin cambios.
 - Inserta los parámetros justo después de `/upload/`, antes del segmento de versión si existe (`/upload/f_auto,q_auto,w_600/v123.../archivo.jpg`), que es sintaxis válida de Cloudinary.
-- No requiere credenciales ni cuenta: la URL completa (con el cloud name) ya viene en `imageUrl` porque quien captura el evento sube la imagen a Cloudinary a mano y pega esa URL en el Sheet.
+- No requiere credenciales ni cuenta: la URL completa (con el cloud name) ya viene en `imageUrls` porque quien captura el evento sube la imagen a Cloudinary a mano y pega esa URL en el Sheet.
 
 ## Dependencia compartida: `@/lib/timezone`
 

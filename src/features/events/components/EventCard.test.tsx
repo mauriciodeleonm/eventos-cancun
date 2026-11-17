@@ -130,7 +130,7 @@ describe('EventCard', () => {
     expect(screen.getByText('Cancelado')).toBeInTheDocument();
   });
 
-  it('shows the category icon instead of an image when there is no imageUrl', () => {
+  it('shows the category icon instead of an image when there are no imageUrls', () => {
     const event = makeEvent({
       id: 'a9',
       name: 'Evento sin imagen',

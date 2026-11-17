@@ -13,15 +13,16 @@ export function EventImage({
   className,
   iconSize = 30,
 }: {
-  event: Pick<Event, 'name' | 'category' | 'imageUrl' | 'status'>;
+  event: Pick<Event, 'name' | 'category' | 'imageUrls' | 'status'>;
   className?: string;
   iconSize?: number;
 }) {
   const [failed, setFailed] = useState(false);
   const CategoryIcon = CATEGORY_ICONS[event.category];
   const opacity = event.status === 'cancelado' ? 0.45 : 1;
+  const imageUrl = event.imageUrls?.[0];
 
-  if (!event.imageUrl || failed) {
+  if (!imageUrl || failed) {
     return (
       <div
         className={cn('flex aspect-video items-center justify-center overflow-hidden', className)}
@@ -39,7 +40,7 @@ export function EventImage({
 
   return (
     <img
-      src={optimizeImageUrl(event.imageUrl)}
+      src={optimizeImageUrl(imageUrl)}
       alt={event.name}
       loading="lazy"
       className={cn('aspect-video object-cover', className)}
