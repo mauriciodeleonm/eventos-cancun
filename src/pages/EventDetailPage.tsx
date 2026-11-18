@@ -228,7 +228,7 @@ export function EventDetailPage() {
 
       <div className="flex flex-col gap-2 pt-1">
         <h2 className="text-xs tracking-[0.08em] text-neutral-500 uppercase">Acerca del evento</h2>
-        <p className="max-w-[62ch] text-[15px] leading-[1.65] text-pretty text-neutral-200">
+        <p className="max-w-[62ch] text-[15px] leading-[1.65] text-pretty whitespace-pre-line text-neutral-200">
           {event.description}
         </p>
       </div>

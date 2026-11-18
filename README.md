@@ -98,7 +98,7 @@ id	name	startDate	endDate	venueName	mapsUrl	price	priceNote	description	imageUrl
 | `mapsUrl`     |     No      | URL de Google Maps. Si está vacía, se genera una a partir de `venueName`.                                                   |
 | `price`       |     No      | Número, `0` o `gratis` (= gratis), o vacío (costo desconocido). Nunca asumas `0`.                                           |
 | `priceNote`   |     No      | Texto libre, ej. "Preventa $350, taquilla $450".                                                                            |
-| `description` |     Sí      | Texto libre.                                                                                                                |
+| `description` |     Sí      | Texto libre. Puede tener varios párrafos — los saltos de línea de la celda se respetan.                                     |
 | `imageUrl`    |     No      | Una o varias URLs de imagen separadas por coma. Si está vacía o no carga, se muestra un ícono de la categoría.              |
 | `officialUrl` |     No      | URL del sitio oficial o venta de boletos.                                                                                   |
 | `category`    |     Sí      | Uno de: `deportes`, `cultura`, `musica`, `gastronomia`, `familiar`, `otro`.                                                 |

@@ -40,6 +40,9 @@ describe('EventDetailPage', () => {
       'https://www.google.com/maps/search/?api=1&query=Cin%C3%A9polis%20La%20Isla%2C%20Canc%C3%BAn',
     );
     expect(screen.queryByText('Este evento ya terminó')).not.toBeInTheDocument();
+    // whitespace-pre-line, so a multi-line description from the Sheet keeps its line
+    // breaks instead of the browser collapsing them into a single line.
+    expect(screen.getByText(/Muestra de cine independiente/)).toHaveClass('whitespace-pre-line');
   });
 
   it('shows a not-found state with a link back to the listing for an unknown id', async () => {
