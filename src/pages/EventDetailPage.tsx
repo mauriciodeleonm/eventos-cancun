@@ -43,31 +43,19 @@ function formatPastNote(event: Pick<Event, 'startDate'>): string {
   return `Se realizó el ${formatLongDay(date)} de ${format(date, 'yyyy')}.`;
 }
 
-function PriceInfo({ event }: { event: Pick<Event, 'price' | 'priceNote' | 'officialUrl'> }) {
-  const label =
-    event.price === 0
-      ? 'Gratis'
-      : event.price === null
-        ? 'Consultar costo'
-        : formatPriceLabel(event.price);
-  const colorClass =
-    event.price === 0 ? 'text-brand-300' : event.price === null ? 'text-neutral-400' : '';
+function PriceInfo({ event }: { event: Pick<Event, 'price' | 'priceNote'> }) {
+  if (event.price === 0) {
+    return <span className="text-brand-300">Gratis</span>;
+  }
+
+  if (event.price === null) {
+    return <span className="text-neutral-400">Consultar costo</span>;
+  }
 
   return (
     <>
-      {event.officialUrl ? (
-        <a
-          href={event.officialUrl}
-          target="_blank"
-          rel="noreferrer"
-          className={cn('hover:underline', colorClass)}
-        >
-          {label}
-        </a>
-      ) : (
-        <span className={colorClass}>{label}</span>
-      )}
-      {event.price !== null && event.price !== 0 && event.priceNote && (
+      <span>{formatPriceLabel(event.price)}</span>
+      {event.priceNote && (
         <span className="mt-0.5 block text-[13px] text-neutral-400">{event.priceNote}</span>
       )}
     </>
@@ -223,6 +211,17 @@ export function EventDetailPage() {
         </a>
         <InfoRow icon={Ticket} label="Precio">
           <PriceInfo event={event} />
+          {event.officialUrl && (
+            <a
+              href={event.officialUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-0.5 inline-flex items-center gap-1 text-[13px] text-brand-300"
+            >
+              Sitio oficial
+              <ExternalLink size={13} aria-hidden="true" />
+            </a>
+          )}
         </InfoRow>
       </div>
 

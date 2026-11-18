@@ -95,25 +95,25 @@ describe('EventDetailPage', () => {
     ).toBeInTheDocument();
   });
 
-  it('links a known price to officialUrl when both exist', async () => {
+  it('shows a separate "Sitio oficial" link next to a known price, instead of linking the price itself', async () => {
     renderDetailPage('obra-bodas-sangre-z5r0');
 
-    await waitFor(() =>
-      expect(screen.getByRole('link', { name: '$450 MXN' })).toHaveAttribute(
-        'href',
-        'https://example.com/bodas-de-sangre',
-      ),
+    await waitFor(() => expect(screen.getByText('$450 MXN')).toBeInTheDocument());
+
+    expect(screen.getByText('$450 MXN').closest('a')).toBeNull();
+    expect(screen.getByRole('link', { name: /Sitio oficial/ })).toHaveAttribute(
+      'href',
+      'https://example.com/bodas-de-sangre',
     );
   });
 
-  it('links "Consultar costo" to officialUrl when the price is unknown', async () => {
+  it('shows the "Sitio oficial" link next to "Consultar costo" when the price is unknown', async () => {
     renderDetailPage('torneo-voleibol-playa-x7m2');
 
-    await waitFor(() =>
-      expect(screen.getByRole('link', { name: 'Consultar costo' })).toBeInTheDocument(),
-    );
+    await waitFor(() => expect(screen.getByText('Consultar costo')).toBeInTheDocument());
 
-    expect(screen.getByRole('link', { name: 'Consultar costo' })).toHaveAttribute(
+    expect(screen.getByText('Consultar costo').closest('a')).toBeNull();
+    expect(screen.getByRole('link', { name: /Sitio oficial/ })).toHaveAttribute(
       'href',
       'https://example.com/torneo-voleibol',
     );
