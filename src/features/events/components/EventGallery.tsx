@@ -22,7 +22,7 @@ export function EventGallery({
   const opacity = event.status === 'cancelado' ? 0.45 : 1;
 
   return (
-    <div className={cn('relative aspect-video overflow-hidden', className)}>
+    <div className={cn('relative aspect-4/3 overflow-hidden', className)}>
       <img
         src={optimizeImageUrl(images[index])}
         alt={`${event.name} (${index + 1} de ${images.length})`}

@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 export function EventDetailSkeleton() {
   return (
     <div className="flex flex-col gap-3" role="status" aria-label="Cargando evento">
-      <Skeleton className="aspect-video w-full rounded-md" />
+      <Skeleton className="aspect-4/3 w-full rounded-md" />
       <Skeleton className="h-8 w-2/3" />
       <Skeleton className="h-4 w-48" />
       <Skeleton className="h-4 w-32" />

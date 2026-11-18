@@ -25,7 +25,7 @@ export function EventImage({
   if (!imageUrl || failed) {
     return (
       <div
-        className={cn('flex aspect-video items-center justify-center overflow-hidden', className)}
+        className={cn('flex aspect-4/3 items-center justify-center overflow-hidden', className)}
         style={{ background: categoryBackgroundTint(event.category), opacity }}
       >
         <CategoryIcon
@@ -43,7 +43,7 @@ export function EventImage({
       src={optimizeImageUrl(imageUrl)}
       alt={event.name}
       loading="lazy"
-      className={cn('aspect-video object-cover', className)}
+      className={cn('aspect-4/3 object-cover', className)}
       style={{ opacity }}
       onError={() => setFailed(true)}
     />
