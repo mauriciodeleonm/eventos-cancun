@@ -120,12 +120,7 @@ En **Extensiones → Apps Script** de tu Sheet, puedes agregar un disparador `on
 
 ## Contribuir
 
-Las contribuciones son bienvenidas. El flujo general:
-
-1. Haz un fork y crea una rama a partir de `main`.
-2. Antes de abrir un PR, corre `npm run format`, `npm run lint`, `npm run test:run` y `npm run build` — todos deben pasar.
-3. Los commits siguen [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `chore:`, `test:`, `docs:`, `refactor:`, `style:`), en inglés.
-4. Abre el PR describiendo el cambio y por qué.
+Las contribuciones son bienvenidas — revisa [CONTRIBUTING.md](CONTRIBUTING.md) para el flujo de fork/rama/PR, las convenciones del proyecto y los [issues etiquetados `good first issue`](https://github.com/mauriciodeleonm/eventos-cancun/labels/good%20first%20issue) si es tu primera vez contribuyendo aquí.
 
 ## Licencia
 

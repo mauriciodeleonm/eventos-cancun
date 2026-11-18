@@ -3,6 +3,9 @@
 Gracias por tu interés en contribuir. Este proyecto es chico a propósito — antes de implementar
 algo grande, abre un issue para platicarlo primero.
 
+¿Usas un asistente de IA (Cursor, Copilot, Claude Code, etc.)? Revisa [AGENTS.md](AGENTS.md) —
+tiene las mismas convenciones de abajo en un formato más directo para agentes.
+
 ## Antes de empezar
 
 1. Revisa los [issues abiertos](https://github.com/mauriciodeleonm/eventos-cancun/issues),
