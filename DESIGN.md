@@ -102,10 +102,14 @@ Tailwind a partir de ese valor base — no se definen a mano.
 
 ## Imágenes
 
-- Proporción fija con `aspect-ratio` (evita saltos de layout).
+- Proporción fija `aspect-4/3` (evita saltos de layout; antes era `aspect-video`/16:9, se hizo
+  más alta porque el `object-cover` recortaba demasiado la mayoría de los flyers reales).
 - Sin `imageUrl` o si falla la carga: `EventImage` muestra el ícono de categoría sobre
   `categoryBackgroundTint`, no una imagen de respaldo externa.
 - `loading="lazy"` en todas las tarjetas.
+- En `EventCard` (listado), la imagen hace un zoom sutil al hover (`hover:scale-110`,
+  `transition-transform duration-300`) dentro de un contenedor `overflow-hidden` que recorta el
+  zoom al tamaño original de la tarjeta.
 
 ## Accesibilidad
 
