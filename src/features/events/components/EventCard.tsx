@@ -59,7 +59,13 @@ export function EventCard({ event }: { event: Event }) {
 
   return (
     <article className="flex flex-col gap-2.5 rounded-md bg-card p-2 pb-3.5 hover:bg-neutral-900">
-      <EventImage event={event} className="rounded-[6px]" iconSize={30} />
+      <div className="overflow-hidden rounded-[6px]">
+        <EventImage
+          event={event}
+          className="w-full transition-transform duration-300 hover:scale-110"
+          iconSize={30}
+        />
+      </div>
       <div className="flex flex-col gap-1.5 px-1.5 pt-0.5">
         <div className="flex min-h-5 items-center justify-between gap-2">
           <span className="inline-flex items-center gap-1.5 text-xs text-neutral-400">
