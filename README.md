@@ -66,6 +66,7 @@ npm run preview      # previsualizar el build
 npm run test:run     # pruebas (Vitest)
 npm run lint         # ESLint
 npm run format       # Prettier
+npm run import:eventos # borrador de eventos de MisTickets/TusBoletos (ver "Scripts de importación")
 ```
 
 ## Fuente de datos
@@ -111,6 +112,18 @@ id	name	startDate	endDate	venueName	mapsUrl	price	priceNote	description	imageUrl
 **Imágenes:** sube el flyer (o varios) a tu cuenta de [Cloudinary](https://cloudinary.com) (plan gratis) y pega en `imageUrl` la URL que te da, tal cual (sin agregarle parámetros) — la app inserta las transformaciones de optimización (`f_auto,q_auto,w_600`) automáticamente al mostrarla. Si subes más de una foto, pega todas las URLs en la misma celda separadas por coma: la primera se usa como vista previa en el listado, y en la página de detalle se muestran todas como un carrusel. Evita links de Google Drive, Facebook o Instagram: no están pensados para incrustarse directamente y fallan o expiran.
 
 Las filas inválidas (campo obligatorio vacío, categoría/estado que no están en la lista, id duplicado) se descartan al cargar, sin romper la app — se registra un aviso en la consola del navegador.
+
+### Scripts de importación
+
+`npm run import:eventos` consulta dos sitios de venta de boletos en Cancún (MisTickets y
+TusBoletos) y genera `borrador-eventos.csv` con las columnas del Sheet ya mapeadas. **No escribe
+nada directamente al Sheet** — revisa el borrador y pega a mano las filas que quieras conservar.
+
+- La columna `category` es una adivinanza por palabras clave; revísala fila por fila.
+- `venueName` en los eventos de TusBoletos puede traer la ciudad pegada al final (ej. "Teatro de
+  Cancún Cancún, Quintana Roo.") — recórtalo si quieres.
+- No detecta eventos que ya agregaste antes; evita duplicados a simple vista.
+- Corre ambos sitios de forma manual y bajo demanda, no hay nada programado ni automático.
 
 ### Generar los ids automáticamente (opcional)
 

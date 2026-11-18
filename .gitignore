@@ -15,6 +15,9 @@ dist-ssr
 # Environment variables (see .env.example)
 .env
 
+# Draft output from npm run import:eventos (personal, reviewed by hand)
+borrador-eventos.csv
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
