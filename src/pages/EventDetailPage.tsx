@@ -44,29 +44,30 @@ function formatPastNote(event: Pick<Event, 'startDate'>): string {
 }
 
 function PriceInfo({ event }: { event: Pick<Event, 'price' | 'priceNote' | 'officialUrl'> }) {
-  if (event.price === 0) {
-    return <span className="text-brand-300">Gratis</span>;
-  }
-
-  if (event.price === null) {
-    return event.officialUrl ? (
-      <a
-        href={event.officialUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="text-neutral-400 hover:underline"
-      >
-        Consultar costo
-      </a>
-    ) : (
-      <span className="text-neutral-400">Consultar costo</span>
-    );
-  }
+  const label =
+    event.price === 0
+      ? 'Gratis'
+      : event.price === null
+        ? 'Consultar costo'
+        : formatPriceLabel(event.price);
+  const colorClass =
+    event.price === 0 ? 'text-brand-300' : event.price === null ? 'text-neutral-400' : '';
 
   return (
     <>
-      <span>{formatPriceLabel(event.price)}</span>
-      {event.priceNote && (
+      {event.officialUrl ? (
+        <a
+          href={event.officialUrl}
+          target="_blank"
+          rel="noreferrer"
+          className={cn('hover:underline', colorClass)}
+        >
+          {label}
+        </a>
+      ) : (
+        <span className={colorClass}>{label}</span>
+      )}
+      {event.price !== null && event.price !== 0 && event.priceNote && (
         <span className="mt-0.5 block text-[13px] text-neutral-400">{event.priceNote}</span>
       )}
     </>

@@ -92,6 +92,17 @@ describe('EventDetailPage', () => {
     ).toBeInTheDocument();
   });
 
+  it('links a known price to officialUrl when both exist', async () => {
+    renderDetailPage('obra-bodas-sangre-z5r0');
+
+    await waitFor(() =>
+      expect(screen.getByRole('link', { name: '$450 MXN' })).toHaveAttribute(
+        'href',
+        'https://example.com/bodas-de-sangre',
+      ),
+    );
+  });
+
   it('links "Consultar costo" to officialUrl when the price is unknown', async () => {
     renderDetailPage('torneo-voleibol-playa-x7m2');
 

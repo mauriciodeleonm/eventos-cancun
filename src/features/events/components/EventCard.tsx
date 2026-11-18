@@ -18,29 +18,36 @@ function formatUntilLabel(event: Pick<Event, 'startDate' | 'endDate'>): string |
 }
 
 function PriceInfo({ event }: { event: Pick<Event, 'price' | 'priceNote' | 'officialUrl'> }) {
-  if (event.price === 0) {
-    return <p className="text-sm font-medium text-brand-300">Gratis</p>;
-  }
-
-  if (event.price === null) {
-    return event.officialUrl ? (
-      <a
-        href={event.officialUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="text-sm font-medium text-neutral-400 hover:underline"
-      >
-        Consultar costo
-      </a>
-    ) : (
-      <p className="text-sm font-medium text-neutral-400">Consultar costo</p>
-    );
-  }
+  const label =
+    event.price === 0
+      ? 'Gratis'
+      : event.price === null
+        ? 'Consultar costo'
+        : formatPriceLabel(event.price);
+  const colorClass =
+    event.price === 0
+      ? 'text-brand-300'
+      : event.price === null
+        ? 'text-neutral-400'
+        : 'text-foreground';
 
   return (
     <div className="text-sm">
-      <p className="font-medium text-foreground">{formatPriceLabel(event.price)}</p>
-      {event.priceNote && <p className="text-neutral-400">{event.priceNote}</p>}
+      {event.officialUrl ? (
+        <a
+          href={event.officialUrl}
+          target="_blank"
+          rel="noreferrer"
+          className={cn('font-medium hover:underline', colorClass)}
+        >
+          {label}
+        </a>
+      ) : (
+        <p className={cn('font-medium', colorClass)}>{label}</p>
+      )}
+      {event.price !== null && event.price !== 0 && event.priceNote && (
+        <p className="text-neutral-400">{event.priceNote}</p>
+      )}
     </div>
   );
 }

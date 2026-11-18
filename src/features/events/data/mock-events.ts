@@ -107,6 +107,7 @@ const mockEvents = [
     venueName: 'Teatro de Cancún',
     price: 450,
     priceNote: 'Boletos agotados en línea, verificar disponibilidad en taquilla',
+    officialUrl: 'https://example.com/bodas-de-sangre',
     description: 'Puesta en escena de la obra de Federico García Lorca.',
     imageUrls: ['https://placehold.co/600x400?text=Bodas+de+Sangre'],
     category: 'cultura',

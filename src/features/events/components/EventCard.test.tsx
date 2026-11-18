@@ -116,6 +116,23 @@ describe('EventCard', () => {
     );
   });
 
+  it('links a known price to officialUrl when both exist', () => {
+    const event = makeEvent({
+      id: 'a7b',
+      name: 'Evento con precio y boletaje externo',
+      startDate: '2026-10-01T19:30',
+      price: 350,
+      officialUrl: 'https://example.com/boletos',
+    });
+
+    renderEventCard(event);
+
+    expect(screen.getByRole('link', { name: '$350 MXN' })).toHaveAttribute(
+      'href',
+      'https://example.com/boletos',
+    );
+  });
+
   it('strikes through the name and shows the status badge when cancelado', () => {
     const event = makeEvent({
       id: 'a8',
