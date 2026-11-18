@@ -11,7 +11,7 @@ import { DATE_RANGE_LABELS, DATE_RANGES } from '@/features/events/utils/filterEv
 import { cn } from '@/lib/utils';
 
 const CHIP_BASE =
-  'inline-flex h-10 shrink-0 items-center gap-1.75 rounded-full border px-3.5 text-[13px] whitespace-nowrap';
+  'inline-flex h-10 shrink-0 cursor-pointer items-center gap-1.75 rounded-full border px-3.5 text-[13px] whitespace-nowrap';
 
 function chipClass(active: boolean): string {
   return cn(
@@ -121,7 +121,7 @@ export function EventFilters() {
             aria-checked={filters.gratis ?? false}
             aria-label="Solo gratis"
             onClick={() => setFilters({ gratis: filters.gratis ? undefined : true })}
-            className="inline-flex h-10 items-center gap-2.5 bg-transparent text-[13px] text-foreground"
+            className="inline-flex h-10 cursor-pointer items-center gap-2.5 bg-transparent text-[13px] text-foreground"
           >
             <span
               className={cn(

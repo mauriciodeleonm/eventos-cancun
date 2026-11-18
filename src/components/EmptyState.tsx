@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 export const EMPTY_STATE_ACTION_CLASS =
-  'mt-2 inline-flex h-11 items-center justify-center gap-1.5 rounded-md border border-primary px-4.5 text-sm font-medium text-primary whitespace-nowrap hover:bg-primary/12 active:bg-primary/22';
+  'mt-2 inline-flex h-11 cursor-pointer items-center justify-center gap-1.5 rounded-md border border-primary px-4.5 text-sm font-medium text-primary whitespace-nowrap hover:bg-primary/12 active:bg-primary/22';
 
 export function EmptyState({
   icon: Icon,
