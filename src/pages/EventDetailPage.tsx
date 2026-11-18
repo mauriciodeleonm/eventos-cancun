@@ -216,7 +216,7 @@ export function EventDetailPage() {
               href={event.officialUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-0.5 inline-flex items-center gap-1 text-[13px] text-brand-300"
+              className="mt-0.5 flex w-fit items-center gap-1 text-[13px] text-brand-300"
             >
               Sitio oficial
               <ExternalLink size={13} aria-hidden="true" />
