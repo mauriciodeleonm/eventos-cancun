@@ -10,6 +10,7 @@ import {
   MapPin,
   RotateCcw,
   Ticket,
+  User,
   type LucideIcon,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
@@ -223,6 +224,22 @@ export function EventDetailPage() {
             </a>
           )}
         </InfoRow>
+        {event.authorName && (
+          <InfoRow icon={User} label="Autor">
+            {event.authorUrl ? (
+              <a
+                href={event.authorUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-brand-300 hover:underline"
+              >
+                {event.authorName}
+              </a>
+            ) : (
+              event.authorName
+            )}
+          </InfoRow>
+        )}
       </div>
 
       <div className="flex flex-col gap-2 pt-1">

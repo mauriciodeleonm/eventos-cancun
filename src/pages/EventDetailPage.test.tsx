@@ -118,4 +118,37 @@ describe('EventDetailPage', () => {
       'https://example.com/torneo-voleibol',
     );
   });
+
+  it('links the author name to authorUrl when both exist', async () => {
+    renderDetailPage('cine-bajo-las-estrellas-k3f9');
+
+    await waitFor(() =>
+      expect(screen.getByRole('link', { name: '@cancunvive' })).toBeInTheDocument(),
+    );
+
+    expect(screen.getByRole('link', { name: '@cancunvive' })).toHaveAttribute(
+      'href',
+      'https://www.tiktok.com/@cancunvive',
+    );
+  });
+
+  it('shows the author name as plain text when there is no authorUrl', async () => {
+    renderDetailPage('expo-artesanal-cancun-p9w1');
+
+    await waitFor(() =>
+      expect(screen.getByText('Ayuntamiento de Benito Juárez')).toBeInTheDocument(),
+    );
+
+    expect(screen.getByText('Ayuntamiento de Benito Juárez').closest('a')).toBeNull();
+  });
+
+  it('does not show an author row when authorName is empty', async () => {
+    renderDetailPage('torneo-voleibol-playa-x7m2');
+
+    await waitFor(() =>
+      expect(screen.getByRole('heading', { name: 'Torneo de Voleibol Playa' })).toBeInTheDocument(),
+    );
+
+    expect(screen.queryByText('Autor')).not.toBeInTheDocument();
+  });
 });

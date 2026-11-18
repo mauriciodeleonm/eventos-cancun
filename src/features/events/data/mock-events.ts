@@ -18,6 +18,8 @@ const mockEvents = [
     description:
       'Proyección al aire libre de clásicos del cine mexicano, con área de cojines y food trucks.',
     imageUrls: ['https://placehold.co/600x400?text=Cine+bajo+las+estrellas'],
+    authorName: '@cancunvive',
+    authorUrl: 'https://www.tiktok.com/@cancunvive',
     category: 'familiar',
   },
   {
@@ -57,6 +59,7 @@ const mockEvents = [
     price: 50,
     description: 'Exposición y venta de artesanías de creadores de Quintana Roo.',
     imageUrls: ['https://placehold.co/600x400?text=Expo+Artesanal'],
+    authorName: 'Ayuntamiento de Benito Juárez',
     category: 'cultura',
   },
   {

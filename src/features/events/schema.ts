@@ -17,6 +17,8 @@ export const eventSchema = z.object({
   description: z.string().min(1),
   imageUrls: z.array(z.string().url()).min(1).optional(),
   officialUrl: z.string().url().optional(),
+  authorName: z.string().optional(),
+  authorUrl: z.string().url().optional(),
   category: z.enum(EVENT_CATEGORIES),
   status: z.enum(EVENT_STATUSES).optional(),
 });

@@ -85,7 +85,7 @@ cp .env.example .env.local
 Una pestaña llamada **`Eventos`** (la única que se publica como CSV) con estos encabezados exactos en la fila 1, en este orden:
 
 ```
-id	name	startDate	endDate	venueName	mapsUrl	price	priceNote	description	imageUrl	officialUrl	category	status
+id	name	startDate	endDate	venueName	mapsUrl	price	priceNote	description	imageUrl	officialUrl	authorName	authorUrl	category	status
 ```
 
 | Columna       | Obligatoria | Formato / valores válidos                                                                                                   |
@@ -101,6 +101,8 @@ id	name	startDate	endDate	venueName	mapsUrl	price	priceNote	description	imageUrl
 | `description` |     Sí      | Texto libre. Puede tener varios párrafos — los saltos de línea de la celda se respetan.                                     |
 | `imageUrl`    |     No      | Una o varias URLs de imagen separadas por coma. Si está vacía o no carga, se muestra un ícono de la categoría.              |
 | `officialUrl` |     No      | URL del sitio oficial o venta de boletos.                                                                                   |
+| `authorName`  |     No      | Nombre de quien publica o es dueño del evento (persona, marca o cuenta de redes). Vacío = no se muestra.                    |
+| `authorUrl`   |     No      | URL de la red social u otro sitio de esa persona/cuenta. Si está vacía, `authorName` se muestra como texto, no como link.   |
 | `category`    |     Sí      | Uno de: `deportes`, `cultura`, `musica`, `gastronomia`, `familiar`, `otro`.                                                 |
 | `status`      |     No      | Uno de: `cancelado`, `pospuesto`, `reprogramado`, `agotado` (no distingue mayúsculas/acentos/espacios). Vacío = programado. |
 

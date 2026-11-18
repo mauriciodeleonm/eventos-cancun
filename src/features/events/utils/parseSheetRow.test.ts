@@ -14,6 +14,8 @@ const validRow: SheetRow = {
   description: 'Evento de prueba para validar el parseo del Sheet.',
   imageUrl: '',
   officialUrl: '',
+  authorName: '@pruebaautor',
+  authorUrl: '',
   category: 'musica',
   status: 'programado',
 };
@@ -74,6 +76,13 @@ describe('parseSheetRow', () => {
     expect(candidate.endDate).toBeUndefined();
     expect(candidate.mapsUrl).toBeUndefined();
     expect(candidate.priceNote).toBeUndefined();
+    expect(candidate.authorUrl).toBeUndefined();
+  });
+
+  it('keeps authorName when the cell has a value, even without an authorUrl', () => {
+    const candidate = parseSheetRow(validRow) as Record<string, unknown>;
+
+    expect(candidate.authorName).toBe('@pruebaautor');
   });
 
   it('parses the price cell with parsePrice, turning an empty cell into null', () => {

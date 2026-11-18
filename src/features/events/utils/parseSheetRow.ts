@@ -21,6 +21,8 @@ export function parseSheetRow(row: SheetRow): unknown {
     description: emptyToUndefined(row.description),
     imageUrls: parseImageUrls(row.imageUrl),
     officialUrl: emptyToUndefined(row.officialUrl),
+    authorName: emptyToUndefined(row.authorName),
+    authorUrl: emptyToUndefined(row.authorUrl),
     category: emptyToUndefined(row.category),
     status: parseStatus(row.status),
   };
