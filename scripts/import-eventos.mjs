@@ -39,7 +39,9 @@ async function run() {
   }
 
   const csv = Papa.unparse(rows, { columns: SHEET_COLUMNS });
-  writeFileSync(OUTPUT_FILE, csv, 'utf8');
+  // BOM so Excel/Sheets detect UTF-8 instead of guessing Windows-1252 and
+  // mangling accents/em dashes on open.
+  writeFileSync(OUTPUT_FILE, `﻿${csv}`, 'utf8');
   console.log(
     `\n${rows.length} eventos escritos en ${OUTPUT_FILE}. Revísalos antes de pegarlos al Sheet.`,
   );
